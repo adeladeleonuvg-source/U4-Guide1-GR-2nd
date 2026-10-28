@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colegio Montano - Unit 4 Grammar Interactive Whiteboard</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap');
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #F2F5E9;
+        }
+        /* Custom scrollbar for interactive whiteboard feel */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F2F5E9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #88B5C7;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #1269A8;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-start p-2 sm:p-6">
+
+    <!-- Whiteboard Frame Container -->
+    <div id="whiteboard-container" class="w-full max-w-7xl bg-white rounded-xl shadow-2xl border-4 border-[#F7D615] flex flex-col overflow-hidden transition-all duration-300">
+        
+        <!-- Whiteboard Header -->
+        <header class="bg-[#1269A8] text-white p-4 sm:px-6 flex flex-wrap justify-between items-center gap-4 border-b-4 border-[#F7D615]">
+            <div class="flex items-center space-x-4">
+                <!-- Institutional Logo -->
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyEop0yf6lZ7Jk9MILZxF1rBj4Oqs5esyhIQ&s" alt="Colegio Montano Logo" class="w-12 h-12 sm:w-14 sm:h-14 rounded-full border-2 border-[#F7D615] object-cover bg-white shadow-md">
+                <div>
+                    <h1 class="text-xl sm:text-2xl font-bold tracking-wide">COLEGIO MONTANO</h1>
+                    <p class="text-xs sm:text-sm text-[#F2F5E9] font-medium opacity-90">Interactive Digital Whiteboard • Second Grade • Unit 4 (Our World 2)</p>
+                </div>
+            </div>
+            
+            <!-- Fullscreen Toggle Button -->
+            <button onclick="toggleFullScreen()" class="bg-[#F7D615] text-[#1269A8] hover:bg-yellow-400 font-bold px-4 py-2 rounded-lg shadow-md transition transform active:scale-95 flex items-center gap-2 text-sm sm:text-base border border-yellow-600">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                </svg>
+                <span>[ ⛶ Fullscreen ]</span>
+            </button>
+        </header>
+
+        <!-- Navigation Tabs (Horizontal) -->
+        <nav class="bg-[#54887D] p-2 sm:px-4 flex flex-wrap gap-2 justify-center sm:justify-start items-center border-b-2 border-[#88B5C7]">
+            <button onclick="switchTab('theory')" id="btn-theory" class="tab-btn px-4 py-2 rounded-lg font-bold text-sm sm:text-base transition bg-[#1269A8] text-white shadow">📚 Theory Explanation</button>
+            <button onclick="switchTab('examples')" id="btn-examples" class="tab-btn px-4 py-2 rounded-lg font-bold text-sm sm:text-base transition bg-[#88B5C7] text-white hover:bg-[#1269A8] shadow">📝 Solved Examples (15)</button>
+            <button onclick="switchTab('exercises')" id="btn-exercises" class="tab-btn px-4 py-2 rounded-lg font-bold text-sm sm:text-base transition bg-[#88B5C7] text-white hover:bg-[#1269A8] shadow">✍️ Practice Exercises (15)</button>
+            <button onclick="switchTab('reflection')" id="btn-reflection" class="tab-btn px-4 py-2 rounded-lg font-bold text-sm sm:text-base transition bg-[#88B5C7] text-white hover:bg-[#1269A8] shadow">🧠 Critical Reflection</button>
+            <button onclick="switchTab('evaluation')" id="btn-evaluation" class="tab-btn px-4 py-2 rounded-lg font-bold text-sm sm:text-base transition bg-[#88B5C7] text-white hover:bg-[#1269A8] shadow">🎯 Formative Assessment</button>
+        </nav>
+
+        <!-- Main Content Canvas Area -->
+        <main class="p-4 sm:p-8 bg-[#F2F5E9] flex-grow overflow-y-auto" style="max-height: 72vh;">
+            
+            <!-- TAB 1: THEORY -->
+            <section id="tab-theory" class="tab-content space-y-6">
+                <div class="bg-white p-6 rounded-xl shadow-md border-l-8 border-[#1269A8]">
+                    <h2 class="text-2xl font-bold text-[#1269A8] mb-2">Grammar I: Simple Present - Wh- Questions and Answers</h2>
+                    <p class="text-gray-700 text-base mb-4">We use <strong class="text-[#1269A8]">What</strong> and <strong class="text-[#1269A8]">Where</strong> questions in the Simple Present to ask about jobs, daily activities, and workplaces for third-person singular (he, she, it) and plural subjects.</p>
+                    
+                    <div class="overflow-x-auto my-4">
+                        <table class="w-full text-left border-collapse bg-[#F2F5E9] rounded-lg overflow-hidden shadow">
+                            <thead>
+                                <tr class="bg-[#1269A8] text-white text-sm sm:text-base">
+                                    <th class="p-3">Wh- Word</th>
+                                    <th class="p-3">Auxiliary</th>
+                                    <th class="p-3">Subject</th>
+                                    <th class="p-3">Base Verb</th>
+                                    <th class="p-3">Answer Example</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-sm sm:text-base text-gray-800 divide-y divide-gray-300">
+                                <tr class="hover:bg-blue-50">
+                                    <td class="p-3 font-semibold text-[#1269A8]">What</td>
+                                    <td class="p-3 font-bold">does / do</td>
+                                    <td class="p-3">your sister / parents</td>
+                                    <td class="p-3 font-semibold">do?</td>
+                                    <td class="p-3 text-[#54887D] font-medium">She's a vet. / They're office workers.</td>
+                                </tr>
+                                <tr class="hover:bg-blue-50">
+                                    <td class="p-3 font-semibold text-[#1269A8]">Where</td>
+                                    <td class="p-3 font-bold">does / do</td>
+                                    <td class="p-3">his uncle / your parents</td>
+                                    <td class="p-3 font-semibold">work?</td>
+                                    <td class="p-3 text-[#54887D] font-medium">He <strong>works</strong> in a firehouse. / They <strong>work</strong> in an office.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="mt-3 p-3 bg-[#88B5C7] bg-opacity-30 rounded-lg text-sm text-gray-800 border border-[#88B5C7]">
+                        💡 <strong>Key Rule:</strong> With <em>he</em>, <em>she</em>, and <em>it</em> in affirmative answers, remember to add <strong>-s</strong> or <strong>-es</strong> to the verb (e.g., *work* ➔ *works*). For pronouns *I, you, we, they*, use the base verb. Note contractions: <em>she's = she is</em>, <em>he's = he is</em>, <em>they're = they are</em>.
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-md border-l-8 border-[#54887D]">
+                    <h2 class="text-2xl font-bold text-[#54887D] mb-2">Grammar II: Simple Present with want + infinitive</h2>
+                    <p class="text-gray-700 text-base mb-4">We use <strong class="text-[#54887D]">want to + infinitive verb</strong> to express future career aspirations, dreams, and personal desires.</p>
+                    
+                    <div class="overflow-x-auto my-4">
+                        <table class="w-full text-left border-collapse bg-[#F2F5E9] rounded-lg overflow-hidden shadow">
+                            <thead>
+                                <tr class="bg-[#54887D] text-white text-sm sm:text-base">
+                                    <th class="p-3">Wh- Word</th>
+                                    <th class="p-3">Auxiliary</th>
+                                    <th class="p-3">Subject</th>
+                                    <th class="p-3">want</th>
+                                    <th class="p-3">Infinitive</th>
+                                    <th class="p-3">Answer Example</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-sm sm:text-base text-gray-800 divide-y divide-gray-300">
+                                <tr class="hover:bg-teal-50">
+                                    <td class="p-3 font-semibold text-[#54887D]">What</td>
+                                    <td class="p-3 font-bold">do / does</td>
+                                    <td class="p-3">you / your brother</td>
+                                    <td class="p-3 font-bold">want</td>
+                                    <td class="p-3 font-semibold">to be?</td>
+                                    <td class="p-3 text-[#1269A8] font-medium">I <strong>want to be</strong> a police officer. / He <strong>wants to be</strong> a scientist.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="mt-3 p-3 bg-[#A6B046] bg-opacity-20 rounded-lg text-sm text-gray-800 border border-[#A6B046]">
+                        ⭐ <strong>Golden Rule:</strong> Notice that with third-person singular (*he*, *she*), *want* becomes **wants**, followed directly by **to be** + noun/profession.
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 2: SOLVED EXAMPLES -->
+            <section id="tab-examples" class="tab-content hidden space-y-6">
+                <div class="border-l-4 border-[#1269A8] pl-4 mb-4">
+                    <h2 class="text-2xl font-bold text-[#1269A8]">Solved Examples (15 Total: 5 Basic, 5 Intermediate, 5 Advanced)</h2>
+                    <p class="text-sm text-gray-600">Review these completely solved examples mirroring NatGeo Our World 2, Unit 4 patterns.</p>
+                </div>
+
+                <!-- Basic Level Examples (1-5) -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-bold text-[#54887D] bg-[#88B5C7] bg-opacity-20 p-2 rounded">🟢 Basic Level Examples (Grammar I & II)</h3>
+                    
+                    <div class="bg-white p-4 rounded-xl shadow border border-gray-200">
+                        <span class="inline-block bg-[#A6B046] text-white text-xs px-2.5 py-1 rounded-full font-bold mb-2">Example 1 (Basic)</span>
+                        <p class="font-medium text-gray-800">Question: What <span class="text-blue-600 font-bold">does</span> your cousin <span class="text-blue-600 font-bold">do</span>?</p>
+                        <p class="text-sm text-gray-600 mt-1">Answer: She's a <span class="font-bold text-[#1269A8]">doctor</span>.</p>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow border border-gray-200">
+                        <span class="inline-block bg-[#A6B046] text-white text-xs px-2.5 py-1 rounded-full font-bold mb-2">Example 2 (Basic)</span>
+                        <p class="font-medium text-gray-800">Question: Where <span class="text-blue-600 font-bold">does</span> your grandpa work?</p>
+                        <p class="text-sm text-gray-600 mt-1">Answer: He <span class="font-bold text-[#1269A8]">works in a lab</span>.</p>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow border border-gray-200">
+                        <span class="inline-block bg-[#A6B046] text-white text-xs px-2.5 py-1 rounded-full font-bold mb-2">Example 3 (Basic)</span>
+                        <p class="font-medium text-gray-800">Question: What <span class="text-blue-600 font-bold">do</span> your parents <span class="text-blue-600 font-bold">do</span>?</p>
+                        <p class="text-sm text-gray-600 mt-1">Answer: They're <span class="font-bold text-[#1269A8]">office workers</span>.</p>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow border border-gray-200">
+                        <span class="inline-block bg-[#A6B046] text-white text-xs px-2.5 py-1 rounded-full font-bold mb-2">Example 4 (Basic)</span>
+                        <p class="font-medium text-gray-800">Question: What <span class="text-blue-600 font-bold">do</span> you <span class="text-blue-600 font-bold">want to be</span>?</p>
+                        <p class="text-sm text-gray-600 mt-1">Answer: I <span class="font-bold text-[#1269A8]">want to be a police officer</span>.</p>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow border border-gray-200">
+                        <span class="inline-block bg-[#A6B046] text-white text-xs px-2.5 py-1 rounded-full font-bold mb-2">Example 5 (Basic)</span>
+                        <p class="font-medium text-gray-800">Question: What <span class="text-blue-600 font-bold">does</span> your brother <span class="text-blue-600 font-bold">want to be</span>?</p>
+                        <p class="text-sm text-gray-600 mt-1">Answer: He <span class="font-bold text-[#1269A8]">wants to be an artist</span>.</p>
+                    </div>
+                </div>
+
+                <!-- Intermediate Level Examples (6-10) -->
+                <div class="space-y-4 pt-4">
+                    <h3 class="text-lg font-bold text-[#1269A8] bg-[#88B5C7] bg-opacity-20 p-2 rounded">🟡 Intermediate Level Examples (Combining Auxiliaries & Workplaces)</h3>
+
+                    <div class="bg-white p-4 rounded-xl shadow border border-gray-200">
+                        <span class="inline-block bg-[#1269A8] text-white text-xs px-2.5 py-1 rounded-full font-bold mb-2">Example 6 (Intermediate)</span>
+                        <p class="font-medium text-gray-800">Context: Sister in an animal hospital.</p>
+                        <p class="text-sm text-gray-600 mt-1">Question/Answer: Where <span class="font-bold text-[#1269A8]">does</span> your sister work? She <span class="font-bold text-[#1269A8]">works in an animal hospital</span>.</p>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow border border-gray-200">
+                        <span class="inline-block bg-[#1269A8] text-white text-xs px-2.5 py-1 rounded-full font-bold mb-2">Example 7 (Intermediate)</span>
+                        <p class="font-medium text-gray-800">Context: Father is a scientist.</p>
+                        <p class="text-sm text-gray-600 mt-1">Question/Answer: What <span class="font-bold text-[#1269A8]">does</span> her father <span class="font-bold text-[#1269A8]">do</span>? He's <span class="font-bold text-[#1269A8]">a scientist</span>.</p>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow border border-gray-200">
+                        <span class="inline-block bg-[#1269A8] text-white text-xs px-2.5 py-1 rounded-full font-bold mb-2">Example 8 (Intermediate)</span>
+                        <p class="font-medium text-gray-800">Context: Mom works in a kitchen.</p>
+                        <p class="text-sm text-gray-600 mt-1">Question/Answer: Where <span class="font-bold text-[#1269A8]">does</span> her mom work? She works <span class="font-bold text-[#1269A8]">in a kitchen</span>.</p>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow border border-gray-200">
+                        <span class="inline-block bg-[#1269A8] text-white text-xs px-2.5 py-1 rounded-full font-bold mb-2">Example 9 (Intermediate)</span>
+                        <p class="font-medium text-gray-800">Context: Sisters want to be inventors.</p>
+                        <p class="text-sm text-gray-600 mt-1">Question/Answer: What <span class="font-bold text-[#1269A8]">do</span> your sisters want to be? They <span class="font-bold text-[#1269A8]">want to be inventors</span>.</p>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow border border-gray-200">
+                        <span class="inline-block bg-[#1269A8] text-white text-xs px-2.5 py-1 rounded-full font-bold mb-2">Example 10 (Intermediate)</span>
+                        <p class="font-medium text-gray-800">Context: Brother wants to be a rock star.</p>
+                        <p class="text-sm text-gray-600 mt-1">Question/Answer: What <span class="font-bold text-[#1269A8]">do</span> you want to be one day? I <span class="font-bold text-[#1269A8]">want to be a rock star</span>.</p>
+                    </div>
+                </div>
+
+                <!-- Advanced Level Examples (11-15) -->
+                <div class="space-y-4 pt-4">
+                    <h3 class="text-lg font-bold text-amber-700 bg-[#F7D615] bg-opacity-30 p-2 rounded">🔴 Advanced Level Examples (Multi-clause integration & want + lifestyle)</h3>
+
+                    <div class="bg-white p-4 rounded-xl shadow border border-gray-200">
+                        <span class="inline-block bg-amber-600 text-white text-xs px-2.5 py-1 rounded-full font-bold mb-2">Example 11 (Advanced)</span>
+                        <p class="font-medium text-gray-800">Context: "He likes clean teeth."</p>
+                        <p class="text-sm text-gray-600 mt-1">Question/Answer: What does he want to be? He <span class="font-bold text-amber-700">wants to be a dentist</span> because he likes clean teeth.</p>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow border border-gray-200">
+                        <span class="inline-block bg-amber-600 text-white text-xs px-2.5 py-1 rounded-full font-bold mb-2">Example 12 (Advanced)</span>
+                        <p class="font-medium text-gray-800">Context: "She likes to work in the sun."</p>
+                        <p class="text-sm text-gray-600 mt-1">Question/Answer: What does she want to be? She <span class="font-bold text-amber-700">wants to be a farmer</span>.</p>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow border border-gray-200">
+                        <span class="inline-block bg-amber-600 text-white text-xs px-2.5 py-1 rounded-full font-bold mb-2">Example 13 (Advanced)</span>
+                        <p class="font-medium text-gray-800">Context: "She likes to play soccer."</p>
+                        <p class="text-sm text-gray-600 mt-1">Question/Answer: What does she want to be? She <span class="font-bold text-amber-700">wants to be a soccer player</span>.</p>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow border border-gray-200">
+                        <span class="inline-block bg-amber-600 text-white text-xs px-2.5 py-1 rounded-full font-bold mb-2">Example 14 (Advanced)</span>
+                        <p class="font-medium text-gray-800">Context: "He likes school and drawing on boards."</p>
+                        <p class="text-sm text-gray-600 mt-1">Question/Answer: What does he want to be? He <span class="font-bold text-amber-700">wants to be a teacher</span>.</p>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-xl shadow border border-gray-200">
+                        <span class="inline-block bg-amber-600 text-white text-xs px-2.5 py-1 rounded-full font-bold mb-2">Example 15 (Advanced)</span>
+                        <p class="font-medium text-gray-800">Context: "Amy's family summary text from NatGeo book."</p>
+                        <p class="text-sm text-gray-600 mt-1">Question/Answer: What <span class="font-bold text-amber-700">does</span> Amy's father <span class="font-bold text-amber-700">do</span>? He <span class="font-bold text-amber-700">is</span> a scientist.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 3: PRACTICE EXERCISES -->
+            <section id="tab-exercises" class="tab-content hidden space-y-6">
+                <div class="border-l-4 border-[#54887D] pl-4 mb-4">
+                    <h2 class="text-2xl font-bold text-[#54887D]">Practice Exercises (15 Total: 5 Basic, 5 Intermediate, 5 Advanced)</h2>
+                    <p class="text-sm text-gray-600">Solve each exercise and click "Show/Hide Solution" to check your work step-by-step.</p>
+                </div>
+
+                <!-- BASIC EXERCISES (1-5) -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-bold text-[#54887D] bg-[#88B5C7] bg-opacity-20 p-2 rounded">🟢 Basic Level Exercises</h3>
+
+                    <!-- Ex 1 -->
+                    <div class="bg-white p-4 rounded-xl shadow border border-gray-200">
+                        <span class="inline-block bg-[#A6B046] text-white text-xs px-2.5 py-1 rounded-full font-bold mb-2">Exercise 1 (Basic)</span>
+                        <p class="font-medium text-gray-800">1. What <input type="text" placeholder="_____" class="border-b-2 border-gray-400 px-1 w-20 text-center focus:outline-none focus:border-[#1269A8]"> your cousin do? (She's a doctor)</p>
+                        <button onclick="toggleSolution('sol-ex1')" class="mt-3 bg-[#1269A8] hover:bg-blue-700 text-white text-xs font-bold px-3 py-1.5 rounded transition">Show/Hide Solution</button>
+                        <div id="sol-ex1" class="hidden mt-3 p-3 bg-[#88B5C7] bg-opacity-30 rounded text-sm text-gray-800">
+                            <strong>Step-by-step Solution:</strong><br>
+                            - Subject: "your cousin" is singular third-person (she).<br>
+                            - Auxiliary for singular third person in Simple Present questions is <strong>does</strong>.<br>
+                            - Correct sentence: What <strong>does</strong> your cousin do?
+                        </div>
+                    </div>
+
+                    <!-- Ex 2 -->
+                    <div class="bg-white p-4 rounded-xl shadow border border-gray-200">
+                        <span class="inline-block bg-[#A6B046] text-white text-xs px-2.5 py-1 rounded-full font-bold mb-2">Exercise 2 (Basic)</span>
+                        <p class="font-medium text-gray-800">2. What <input type="text" placeholder="_____" class="border-b-2 border-gray-400 px-1 w-20 text-center focus:outline-none focus:border-[#1269A8]"> your grandpa <input type="text" placeholder="_____" class="border-b-2 border-gray-400 px-1 w-20 text-center focus:outline-none focus:border-[#1269A8]"></p>
+                        <button onclick="toggleSolution('sol-ex2')" class="mt-3 bg-[#1269A8] hover:bg-blue-700 text-white text-xs font-bold px-3 py-1.5 rounded transition">Show/Hide Solution</button>
+                        <div id="sol-ex2" class="hidden mt-3 p-3 bg-[#88B5C7] bg-opacity-30 rounded text-sm text-gray-800">
+                            <strong>Step-by-step Solution:</strong><br>
+                            - Subject: "your grandpa" (he).<br>
+                            - Structure: Wh- + does + subject + do?<br>
+                            - Correct sentence: What <strong>does</strong> your grandpa <strong>do</strong>?
+                        </div>
+                    </div>
+
+                    <!-- Ex 3 -->
+                    <div class="bg-white p-4 rounded-xl shadow border border-gray-200">
+                        <span class="inline-block bg-[#A6B046] text-white text-xs px-2.5 py-1 rounded-full font-bold mb-2">Exercise 3 (Basic)</span>
+                        <p class="font-medium text-gray-800">3. She <input type="text" placeholder="_____" class="border-b-2 border-gray-400 px-1 w-24 text-center focus:outline-none focus:border-[#1269A8]"> in a hospital. (work)</p>
+                        <button onclick="toggleSolution('sol-ex3')" class="mt-3 bg-[#1269A8] hover:bg-blue-700 text-white text-xs font-bold px-3 py-1.5 rounded transition">Show/Hide Solution</button>
+                        <div id="sol-ex3" class="hidden mt-3 p-3 bg-[#88B5C7] bg-opacity-30 rounded text-sm text-gray-800">
+                            <strong>Step-by-step Solution:</strong><br>
+                            - Pronoun: "She" requires adding -s in affirmative simple present.<br>
+                            - Correct sentence: She <strong>works</strong> in a hospital.
+                        </div>
+                    </div>
+
+                    <!-- Ex 4 -->
+                    <div class="bg-white p-4 rounded-xl shadow border border-gray-200">
+                        <span class="inline-block bg-[#A6B046] text-white text-xs px-2.5 py-1 rounded-full font-bold mb-2">Exercise 4 (Basic)</span>
+                        <p class="font-medium text-gray-800">4. What <input type="text" placeholder="_____" class="border-b-2 border-gray-400 px-1 w-20 text-center focus:outline-none focus:border-[#1269A8]"> your brother want to be?</p>
+                        <button onclick="toggleSolution('sol-ex4')" class="mt-3 bg-[#1269A8] hover:bg-blue-700 text-white text-xs font-bold px-3 py-1.5 rounded transition">Show/Hide Solution</button>
+                        <div id="sol-ex4" class="hidden mt-3 p-3 bg-[#88B5C7] bg-opacity-30 rounded text-sm text-gray-800">
+                            <strong>Step-by-step Solution:</strong><br>
+                            - Subject: "your brother" = he.<br>
+                            - Auxiliary needed: <strong>does</strong>.<br>
+                            - Correct sentence: What <strong>does</strong> your brother want to be?
+                        </div>
+                    </div>
+
+                    <!-- Ex 5 -->
+                    <div class="bg-white p-4 rounded-xl shadow border border-gray-200">
+                        <span class="inline-block bg-[#A6B046] text-white text-xs px-2.5 py-1 rounded-full font-bold mb-2">Exercise 5 (Basic)</span>
+                        <p class="font-medium text-gray-800">5. He <input type="text" placeholder="_____" class="border-b-2 border-gray-400 px-1 w-28 text-center focus:outline-none focus:border-[#1269A8]"> an artist.</p>
+                        <button onclick="toggleSolution('sol-ex5')" class="mt-3 bg-[#1269A8] hover:bg-blue-700 text-white text-xs font-bold px-3 py-1.5 rounded transition">Show/Hide Solution</button>
+                        <div id="sol-ex5" class="hidden mt-3 p-3 bg-[#88B5C7] bg-opacity-30 rounded text-sm text-gray-800">
+                            <strong>Step-by-step Solution:</strong><br>
+                            - Verb 'to be' with singular pronoun he is "is" (or contraction he's).<br>
+                            - Correct sentence: He <strong>is</strong> an artist.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- INTERMEDIATE EXERCISES (6-10) -->
+                <div class="space-y-4 pt-4">
+                    <h3 class="text-lg font-bold text-[#1269A8] bg-[#88B5C7] bg-opacity-20 p-2 rounded">🟡 Intermediate Level Exercises</h3>
+
+                    <!-- Ex 6 -->
+                    <div class="bg-white p-4 rounded-xl shadow border border-gray-200">
+                        <span class="inline-block bg-[#1269A8] text-white text-xs px-2.5 py-1 rounded-full font-bold mb-2">Exercise 6 (Intermediate)</span>
+                        <p class="font-medium text-gray-800">6. Where <input type="text" placeholder="_____" class="border-b-2 border-gray-400 px-1 w-20 text-center focus:outline-none focus:border-[#1269A8]"> your parents work? They <input type="text" placeholder="_____" class="border-b-2 border-gray-400 px-1 w-20 text-center focus:outline-none focus:border-[#1269A8]"> in an office.</p>
+                        <button onclick="toggleSolution('sol-ex6')" class="mt-3 bg-[#1269A8] hover:bg-blue-700 text-white text-xs font-bold px-3 py-1.5 rounded transition">Show/Hide Solution</button>
+                        <div id="sol-ex6" class="hidden mt-3 p-3 bg-[#88B5C7] bg-opacity-30 rounded text-sm text-gray-800">
+                            <strong>Step-by-step Solution:</strong><br>
+                            - Subject: "parents" is plural (they).<br>
+                            - Question auxiliary: <strong>do</strong>.<br>
+                            - Affirmative verb for they: <strong>work</strong>.<br>
+                            - Correct: Where <strong>do</strong> your parents work? They <strong>work</strong> in an office.
+                        </div>
+                    </div>
+
+                    <!-- Ex 7 -->
+                    <div class="bg-white p-4 rounded-xl shadow border border-gray-200">
+                        <span class="inline-block bg-[#1269A8] text-white text-xs px-2.5 py-1 rounded-full font-bold mb-2">Exercise 7 (Intermediate)</span>
+                        <p class="font-medium text-gray-800">7. What do your sisters <input type="text" placeholder="_____" class="border-b-2 border-gray-400 px-1 w-24 text-center focus:outline-none focus:border-[#1269A8]">? They want to be inventors.</p>
+                        <button onclick="toggleSolution('sol-ex7')" class="mt-3 bg-[#1269A8] hover:bg-blue-700 text-white text-xs font-bold px-3 py-1.5 rounded transition">Show/Hide Solution</button>
+                        <div id="sol-ex7" class="hidden mt-3 p-3 bg-[#88B5C7] bg-opacity-30 rounded text-sm text-gray-800">
+                            <strong>Step-by-step Solution:</strong><br>
+                            - Asking about future aspiration with 'want'.<br>
+                            - Missing part: <strong>want to be</strong>.<br>
+                            - Correct sentence: What do your sisters <strong>want to be</strong>?
+                        </div>
+                    </div>
+
+                    <!-- Ex 8 -->
+                    <div class="bg-white p-4 rounded-xl shadow border border-gray-200">
+                        <span class="inline-block bg-[#1269A8] text-white text-xs px-2.5 py-1 rounded-full font-bold mb-2">Exercise 8 (Intermediate)</span>
+                        <p class="font-medium text-gray-800">8. He <input type="text" placeholder="_____" class="border-b-2 border-gray-400 px-1 w-24 text-center focus:outline-none focus:border-[#1269A8]"> in a school. (work)</p>
+                        <button onclick="toggleSolution('sol-ex8')" class="mt-3 bg-[#1269A8] hover:bg-blue-700 text-white text-xs font-bold px-3 py-1.5 rounded transition">Show/Hide Solution</button>
+                        <div id="sol-ex8" class="hidden mt-3 p-3 bg-[#88B5C7] bg-opacity-30 rounded text-sm text-gray-800">
+                            <strong>Step-by-step Solution:</strong><br>
+                            - Subject: "He" (3rd person singular).<br>
+                            - Add -s to verb work.<br>
+                            - Correct answer: <strong>works</strong>.
+                        </div>
+                    </div>
+
+                    <!-- Ex 9 -->
+                    <div class="bg-white p-4 rounded-xl shadow border border-gray-200">
+                        <span class="inline-block bg-[#1269A8] text-white text-xs px-2.5 py-1 rounded-full font-bold mb-2">Exercise 9 (Intermediate)</span>
+                        <p class="font-medium text-gray-800">9. What <input type="text" placeholder="_____" class="border-b-2 border-gray-400 px-1 w-20 text-center focus:outline-none focus:border-[#1269A8]"> her father do? He's a scientist.</p>
+                        <button onclick="toggleSolution('sol-ex9')" class="mt-3 bg-[#1269A8] hover:bg-blue-700 text-white text-xs font-bold px-3 py-1.5 rounded transition">Show/Hide Solution</button>
+                        <div id="sol-ex9" class="hidden mt-3 p-3 bg-[#88B5C7] bg-opacity-30 rounded text-sm text-gray-800">
+                            <strong>Step-by-step Solution:</strong><br>
+                            - Subject: "her father" (he).<br>
+                            - Correct auxiliary: <strong>does</strong>.
+                        </div>
+                    </div>
+
+                    <!-- Ex 10 -->
+                    <div class="bg-white p-4 rounded-xl shadow border border-gray-200">
+                        <span class="inline-block bg-[#1269A8] text-white text-xs px-2.5 py-1 rounded-full font-bold mb-2">Exercise 10 (Intermediate)</span>
+                        <p class="font-medium text-gray-800">10. Where <input type="text" placeholder="_____" class="border-b-2 border-gray-400 px-1 w-20 text-center focus:outline-none focus:border-[#1269A8]"> her mom work? She works in a kitchen.</p>
+                        <button onclick="toggleSolution('sol-ex10')" class="mt-3 bg-[#1269A8] hover:bg-blue-700 text-white text-xs font-bold px-3 py-1.5 rounded transition">Show/Hide Solution</button>
+                        <div id="sol-ex10" class="hidden mt-3 p-3 bg-[#88B5C7] bg-opacity-30 rounded text-sm text-gray-800">
+                            <strong>Step-by-step Solution:</strong><br>
+                            - Subject: "her mom" (she).<br>
+                            - Correct auxiliary: <strong>does</strong>.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ADVANCED EXERCISES (11-15) -->
+                <div class="space-y-4 pt-4">
+                    <h3 class="text-lg font-bold text-amber-700 bg-[#F7D615] bg-opacity-30 p-2 rounded">🔴 Advanced Level Exercises</h3>
+
+                    <!-- Ex 11 -->
+                    <div class="bg-white p-4 rounded-xl shadow border border-gray-200">
+                        <span class="inline-block bg-amber-600 text-white text-xs px-2.5 py-1 rounded-full font-bold mb-2">Exercise 11 (Advanced)</span>
+                        <p class="font-medium text-gray-800">11. He likes clean teeth. What <input type="text" placeholder="_____" class="border-b-2 border-gray-400 px-1 w-20 text-center focus:outline-none focus:border-[#1269A8]"> he want to <input type="text" placeholder="_____" class="border-b-2 border-gray-400 px-1 w-20 text-center focus:outline-none focus:border-[#1269A8]">?</p>
+                        <button onclick="toggleSolution('sol-ex11')" class="mt-3 bg-[#1269A8] hover:bg-blue-700 text-white text-xs font-bold px-3 py-1.5 rounded transition">Show/Hide Solution</button>
+                        <div id="sol-ex11" class="hidden mt-3 p-3 bg-[#88B5C7] bg-opacity-30 rounded text-sm text-gray-800">
+                            <strong>Step-by-step Solution:</strong><br>
+                            - Subject: he.<br>
+                            - Question auxiliary: <strong>does</strong>.<br>
+                            - Infinitive complement: <strong>be</strong>.<br>
+                            - Correct: What <strong>does</strong> he want to <strong>be</strong>?
+                        </div>
+                    </div>
+
+                    <!-- Ex 12 -->
+                    <div class="bg-white p-4 rounded-xl shadow border border-gray-200">
+                        <span class="inline-block bg-amber-600 text-white text-xs px-2.5 py-1 rounded-full font-bold mb-2">Exercise 12 (Advanced)</span>
+                        <p class="font-medium text-gray-800">12. She likes to work in the sun. She <input type="text" placeholder="_____" class="border-b-2 border-gray-400 px-1 w-24 text-center focus:outline-none focus:border-[#1269A8]"> to be a farmer.</p>
+                        <button onclick="toggleSolution('sol-ex12')" class="mt-3 bg-[#1269A8] hover:bg-blue-700 text-white text-xs font-bold px-3 py-1.5 rounded transition">Show/Hide Solution</button>
+                        <div id="sol-ex12" class="hidden mt-3 p-3 bg-[#88B5C7] bg-opacity-30 rounded text-sm text-gray-800">
+                            <strong>Step-by-step Solution:</strong><br>
+                            - Subject: She (3rd person singular).<br>
+                            - Affirmative verb 'want' needs -s.<br>
+                            - Correct answer: <strong>wants</strong>.
+                        </div>
+                    </div>
+
+                    <!-- Ex 13 -->
+                    <div class="bg-white p-4 rounded-xl shadow border border-gray-200">
+                        <span class="inline-block bg-amber-600 text-white text-xs px-2.5 py-1 rounded-full font-bold mb-2">Exercise 13 (Advanced)</span>
+                        <p class="font-medium text-gray-800">13. Read Amy's text: "My father <input type="text" placeholder="_____" class="border-b-2 border-gray-400 px-1 w-20 text-center focus:outline-none focus:border-[#1269A8]"> a scientist, and my mother <input type="text" placeholder="_____" class="border-b-2 border-gray-400 px-1 w-20 text-center focus:outline-none focus:border-[#1269A8]"> a vet."</p>
+                        <button onclick="toggleSolution('sol-ex13')" class="mt-3 bg-[#1269A8] hover:bg-blue-700 text-white text-xs font-bold px-3 py-1.5 rounded transition">Show/Hide Solution</button>
+                        <div id="sol-ex13" class="hidden mt-3 p-3 bg-[#88B5C7] bg-opacity-30 rounded text-sm text-gray-800">
+                            <strong>Step-by-step Solution:</strong><br>
+                            - Using verb 'to be' (is) for singular parents.<br>
+                            - Correct answers: father <strong>is</strong>, mother <strong>is</strong>.
+                        </div>
+                    </div>
+
+                    <!-- Ex 14 -->
+                    <div class="bg-white p-4 rounded-xl shadow border border-gray-200">
+                        <span class="inline-block bg-amber-600 text-white text-xs px-2.5 py-1 rounded-full font-bold mb-2">Exercise 14 (Advanced)</span>
+                        <p class="font-medium text-gray-800">14. Form a full question: (Where / your brother / work)</p>
+                        <button onclick="toggleSolution('sol-ex14')" class="mt-3 bg-[#1269A8] hover:bg-blue-700 text-white text-xs font-bold px-3 py-1.5 rounded transition">Show/Hide Solution</button>
+                        <div id="sol-ex14" class="hidden mt-3 p-3 bg-[#88B5C7] bg-opacity-30 rounded text-sm text-gray-800">
+                            <strong>Step-by-step Solution:</strong><br>
+                            - Wh- word (Where) + does + subject (your brother) + base verb (work)?<br>
+                            - Correct: Where does your brother work?
+                        </div>
+                    </div>
+
+                    <!-- Ex 15 -->
+                    <div class="bg-white p-4 rounded-xl shadow border border-gray-200">
+                        <span class="inline-block bg-amber-600 text-white text-xs px-2.5 py-1 rounded-full font-bold mb-2">Exercise 15 (Advanced)</span>
+                        <p class="font-medium text-gray-800">15. Form a full question with want: (What / you / want to be)</p>
+                        <button onclick="toggleSolution('sol-ex15')" class="mt-3 bg-[#1269A8] hover:bg-blue-700 text-white text-xs font-bold px-3 py-1.5 rounded transition">Show/Hide Solution</button>
+                        <div id="sol-ex15" class="hidden mt-3 p-3 bg-[#88B5C7] bg-opacity-30 rounded text-sm text-gray-800">
+                            <strong>Step-by-step Solution:</strong><br>
+                            - Wh- word (What) + do + subject (you) + want to be?<br>
+                            - Correct: What do you want to be?
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 4: CRITICAL REFLECTION -->
+            <section id="tab-reflection" class="tab-content hidden space-y-6">
+                <div class="bg-white p-6 rounded-xl shadow-md border-l-8 border-[#F7D615]">
+                    <h2 class="text-2xl font-bold text-[#1269A8] mb-4">🧠 Critical Reflection & Logical Thinking</h2>
+                    <p class="text-gray-700 mb-4">Discuss these open-ended questions with your classmates or teacher to connect grammar with real life:</p>
+                    
+                    <div class="space-y-4">
+                        <div class="p-4 bg-[#F2F5E9] rounded-lg border border-[#88B5C7]">
+                            <h3 class="font-bold text-[#54887D] mb-1">Question 1:</h3>
+                            <p class="text-gray-800">Why do we use <strong>does</strong> for singular subjects (like <em>your sister</em> or <em>he</em>) and <strong>do</strong> for plural subjects (like <em>your parents</em> or <em>you</em>)? How does this rule help us speak clearly?</p>
+                        </div>
+
+                        <div class="p-4 bg-[#F2F5E9] rounded-lg border border-[#88B5C7]">
+                            <h3 class="font-bold text-[#54887D] mb-1">Question 2:</h3>
+                            <p class="text-gray-800">Look at the difference between "What do you do?" and "What do you want to be?". How does changing the verb phrase change the time period we are talking about (present vs. future)?</p>
+                        </div>
+
+                        <div class="p-4 bg-[#F2F5E9] rounded-lg border border-[#88B5C7]">
+                            <h3 class="font-bold text-[#54887D] mb-1">Question 3:</h3>
+                            <p class="text-gray-800">If someone tells you "He <em>want</em> to be a doctor," what grammatical error did they make according to Colegio Montano rules, and how would you politely fix it?</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 5: FORMATIVE ASSESSMENT -->
+            <section id="tab-evaluation" class="tab-content hidden space-y-6">
+                <div class="bg-white p-6 rounded-xl shadow-md border-l-8 border-[#1269A8]">
+                    <h2 class="text-2xl font-bold text-[#1269A8] mb-4">🎯 Formative Assessment Quiz</h2>
+                    <p class="text-gray-700 mb-6">Test your knowledge of Unit 4 Grammar. Click the buttons below each question to reveal the correct answer and explanation.</p>
+
+                    <div class="space-y-6">
+                        <!-- Q1 -->
+                        <div class="p-4 bg-gray-50 rounded-xl border border-gray-200">
+                            <p class="font-bold text-gray-800 mb-2">1. Choose the correct auxiliary: "Where _____ your uncle work?"</p>
+                            <div class="space-y-1 text-sm text-gray-700 mb-3">
+                                <label class="block"><input type="radio" name="q1" class="mr-2"> A) do</label>
+                                <label class="block"><input type="radio" name="q1" class="mr-2"> B) does</label>
+                                <label class="block"><input type="radio" name="q1" class="mr-2"> C) is</label>
+                            </div>
+                            <button onclick="toggleSolution('eval-1')" class="bg-[#54887D] text-white text-xs font-bold px-3 py-1.5 rounded">Reveal Answer</button>
+                            <div id="eval-1" class="hidden mt-2 p-3 bg-teal-50 rounded text-sm text-gray-800 border border-teal-200">
+                                <strong>Correct Answer: B) does</strong><br>Explanation: "your uncle" is third-person singular (he), so we use *does*.
+                            </div>
+                        </div>
+
+                        <!-- Q2 -->
+                        <div class="p-4 bg-gray-50 rounded-xl border border-gray-200">
+                            <p class="font-bold text-gray-800 mb-2">2. Choose the correct form: "She _____ in a firehouse."</p>
+                            <div class="space-y-1 text-sm text-gray-700 mb-3">
+                                <label class="block"><input type="radio" name="q2" class="mr-2"> A) work</label>
+                                <label class="block"><input type="radio" name="q2" class="mr-2"> B) working</label>
+                                <label class="block"><input type="radio" name="q2" class="mr-2"> C) works</label>
+                            </div>
+                            <button onclick="toggleSolution('eval-2')" class="bg-[#54887D] text-white text-xs font-bold px-3 py-1.5 rounded">Reveal Answer</button>
+                            <div id="eval-2" class="hidden mt-2 p-3 bg-teal-50 rounded text-sm text-gray-800 border border-teal-200">
+                                <strong>Correct Answer: C) works</strong><br>Explanation: Affirmative sentences with "she" require the -s ending in simple present.
+                            </div>
+                        </div>
+
+                        <!-- Q3 -->
+                        <div class="p-4 bg-gray-50 rounded-xl border border-gray-200">
+                            <p class="font-bold text-gray-800 mb-2">3. Complete the sentence: "He _____ to be a scientist."</p>
+                            <div class="space-y-1 text-sm text-gray-700 mb-3">
+                                <label class="block"><input type="radio" name="q3" class="mr-2"> A) want</label>
+                                <label class="block"><input type="radio" name="q3" class="mr-2"> B) wants</label>
+                                <label class="block"><input type="radio" name="q3" class="mr-2"> C) wanting</label>
+                            </div>
+                            <button onclick="toggleSolution('eval-3')" class="bg-[#54887D] text-white text-xs font-bold px-3 py-1.5 rounded">Reveal Answer</button>
+                            <div id="eval-3" class="hidden mt-2 p-3 bg-teal-50 rounded text-sm text-gray-800 border border-teal-200">
+                                <strong>Correct Answer: B) wants</strong><br>Explanation: Third-person singular (He) takes *wants* + infinitive (*to be*).
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Whiteboard Footer Info -->
+        <footer class="bg-gray-100 p-3 text-center text-xs text-gray-600 border-t border-gray-300">
+            Colegio Montano Digital Learning Environment • Designed for Canvas LMS Integration • NatGeo Our World 2 Unit 4
+        </footer>
+    </div>
+
+    <!-- JavaScript Interactive Logic -->
+    <script>
+        // Tab switching function
+        function switchTab(tabName) {
+            // Hide all tab contents
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.add('hidden'));
+
+            // Reset all tab buttons styling
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-[#1269A8]', 'shadow-lg');
+                btn.classList.add('bg-[#88B5C7]');
+            });
+
+            // Show selected tab content
+            document.getElementById('tab-' + tabName).classList.remove('hidden');
+
+            // Highlight active button
+            const activeBtn = document.getElementById('btn-' + tabName);
+            activeBtn.classList.remove('bg-[#88B5C7]');
+            activeBtn.classList.add('bg-[#1269A8]', 'shadow-lg');
+        }
+
+        // Toggle Solution visibility for exercises
+        function toggleSolution(id) {
+            const el = document.getElementById(id);
+            if (el.classList.contains('hidden')) {
+                el.classList.remove('hidden');
+            } else {
+                el.classList.add('hidden');
+            }
+        }
+
+        // Fullscreen API implementation for whiteboard
+        function toggleFullScreen() {
+            const container = document.getElementById('whiteboard-container');
+            if (!document.fullscreenElement) {
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.mozRequestFullScreen) { // Firefox
+                    container.mozRequestFullScreen();
+                } else if (container.webkitRequestFullscreen) { // Chrome, Safari & Opera
+                    container.webkitRequestFullscreen();
+                } else if (container.msRequestFullscreen) { // IE/Edge
+                    container.msRequestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            }
+        }
+    </script>
+</body>
+</html>
